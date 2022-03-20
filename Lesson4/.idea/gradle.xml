@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/data_thread" />
+            <option value="$PROJECT_DIR$/loadermanger" />
             <option value="$PROJECT_DIR$/looper" />
             <option value="$PROJECT_DIR$/thread" />
           </set>
