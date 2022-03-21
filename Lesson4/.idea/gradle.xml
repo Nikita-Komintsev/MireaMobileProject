@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/loadermanger" />
             <option value="$PROJECT_DIR$/looper" />
             <option value="$PROJECT_DIR$/thread" />
+            <option value="$PROJECT_DIR$/workmanager" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

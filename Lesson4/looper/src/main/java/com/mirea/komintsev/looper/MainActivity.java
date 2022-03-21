@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         Message msg = new Message();
         Bundle bundle = new Bundle();
         bundle.putString("KEY", "Student");
-        bundle.putString("year", "21");
         msg.setData(bundle);
         if (myLooper != null) {
             myLooper.handler.sendMessage(msg);
