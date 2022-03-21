@@ -24,13 +24,13 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/nav_brouser"
-        android:name="com.mirea.komintsev.mireaproject.WebViewFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.browser.WebViewFragment"
         android:label="Browser"
         tools:layout="@layout/fragment_web" />
 
     <fragment
         android:id="@+id/nav_calculate"
-        android:name="com.mirea.komintsev.mireaproject.CalculateFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.calculate.CalculateFragment"
         android:label="@string/calculate"
         tools:layout="@layout/fragment_calculate"/>
 </navigation>

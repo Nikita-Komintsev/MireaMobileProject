@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WebViewFragment">
+    tools:context=".ui.browser.WebViewFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <WebView

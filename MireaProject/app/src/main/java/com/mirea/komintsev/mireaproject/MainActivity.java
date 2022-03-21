@@ -1,5 +1,6 @@
 package com.mirea.komintsev.mireaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -63,4 +64,12 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void onClickPlayMusic(View view) {
+        startService(
+                new Intent(MainActivity.this, PlayerService.class));
+    }
+    public void onClickStopMusic(View view) {
+        stopService(
+                new Intent(MainActivity.this, PlayerService.class));
+    }
 }

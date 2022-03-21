@@ -1,10 +1,10 @@
-package com.mirea.komintsev.mireaproject;
+package com.mirea.komintsev.mireaproject.ui.calculate;
 
 import android.annotation.SuppressLint;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.mirea.komintsev.mireaproject.R;
 
 /**
  * A simple {@link Fragment} subclass.
