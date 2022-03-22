@@ -8,6 +8,8 @@ import android.os.SystemClock;
 import android.view.View;
 import android.os.Handler;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
     private MyLooper myLooper;
     @Override
@@ -22,10 +24,16 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         Message msg = new Message();
         Bundle bundle = new Bundle();
-        bundle.putString("KEY", "Student");
+        bundle.putString("KEY", "21 Student");
         msg.setData(bundle);
-        if (myLooper != null) {
-            myLooper.handler.sendMessage(msg);
+        try {
+            TimeUnit.SECONDS.sleep(21);
+            if (myLooper != null) {
+                myLooper.handler.sendMessage(msg);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
     }
 }

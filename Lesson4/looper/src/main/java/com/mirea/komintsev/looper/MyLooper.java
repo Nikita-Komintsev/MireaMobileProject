@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.LogRecord;
 
 public class MyLooper extends Thread{
@@ -19,7 +20,7 @@ public class MyLooper extends Thread{
 
         handler = new Handler(){
             public void handleMessage(Message msg){
-            Log.d("MyLooper", number + ":"+ msg.getData().getString("KEY"));
+            Log.d("MyLooper", number + ": "+ msg.getData().getString("KEY"));
             number++;
             }
         };
