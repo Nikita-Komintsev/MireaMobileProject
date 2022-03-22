@@ -1,9 +1,11 @@
-package com.mirea.komintsev.mireaproject;
+package com.mirea.komintsev.mireaproject.ui.player;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+
+import com.mirea.komintsev.mireaproject.R;
 
 public class PlayerService extends Service {
     private MediaPlayer mediaPlayer;

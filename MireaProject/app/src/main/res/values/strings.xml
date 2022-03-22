@@ -16,4 +16,5 @@
     <string name="calculate">Calculate</string>
     <string name="enter_number">Введите число</string>
     <string name="result">Результат</string>
+    <string name="music_player">Music Player</string>
 </resources>

@@ -33,4 +33,10 @@
         android:name="com.mirea.komintsev.mireaproject.ui.calculate.CalculateFragment"
         android:label="@string/calculate"
         tools:layout="@layout/fragment_calculate"/>
+
+    <fragment
+        android:id="@+id/nav_musicPlayer"
+        android:name="com.mirea.komintsev.mireaproject.ui.player.MusicPlayer"
+        android:label="@string/music_player"
+        tools:layout="@layout/fragment_music_player"/>
 </navigation>

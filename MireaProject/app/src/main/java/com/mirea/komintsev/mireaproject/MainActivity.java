@@ -1,9 +1,11 @@
 package com.mirea.komintsev.mireaproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -16,12 +18,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mirea.komintsev.mireaproject.databinding.ActivityMainBinding;
+import com.mirea.komintsev.mireaproject.ui.player.PlayerService;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
+    Button playButton;
+    boolean musicPlay = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_brouser, R.id.nav_calculate)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_brouser, R.id.nav_calculate,
+                R.id.nav_musicPlayer)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -63,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
     public void onClickPlayMusic(View view) {
         startService(
                 new Intent(MainActivity.this, PlayerService.class));
@@ -71,5 +74,19 @@ public class MainActivity extends AppCompatActivity {
     public void onClickStopMusic(View view) {
         stopService(
                 new Intent(MainActivity.this, PlayerService.class));
+    }
+
+    public  void  PlayOrStopMusic(View view){
+        playButton = findViewById(R.id.playButton);
+        if (!musicPlay){
+            onClickPlayMusic(view);
+            musicPlay = true;
+            playButton.setText("Stop");
+        }
+        else{
+            onClickStopMusic(view);
+            musicPlay = false;
+            playButton.setText("Play");
+        }
     }
 }

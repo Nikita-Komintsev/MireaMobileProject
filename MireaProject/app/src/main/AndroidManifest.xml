@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MireaProject">
         <service
-            android:name=".PlayerService"
+            android:name=".ui.player.PlayerService"
             android:enabled="true"
             android:exported="true"></service>
 
