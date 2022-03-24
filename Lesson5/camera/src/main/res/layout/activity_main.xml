@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="206dp"
-        android:layout_height="205dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="176dp"
+        android:layout_width="275dp"
+        android:layout_height="288dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="92dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
