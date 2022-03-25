@@ -9,14 +9,6 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
             android:id="@+id/nav_brouser"
             android:icon="@android:drawable/ic_menu_share"
             android:title="@string/brouser" />
@@ -29,5 +21,16 @@
             android:id="@+id/nav_musicPlayer"
             android:icon="@android:drawable/ic_media_play"
             android:title="@string/music_player" />
+
+        <item
+            android:id="@+id/nav_datchic"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/datchic" />
+
+        <item
+            android:id="@+id/nav_photo"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/photo" />
+
         </group>
 </menu>

@@ -17,4 +17,6 @@
     <string name="enter_number">Введите число</string>
     <string name="result">Результат</string>
     <string name="music_player">Music Player</string>
+    <string name="datchic">Sensors</string>
+    <string name="photo">Photo</string>
 </resources>

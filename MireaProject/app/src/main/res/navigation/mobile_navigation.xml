@@ -12,17 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.mirea.komintsev.mireaproject.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.mirea.komintsev.mireaproject.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/nav_brouser"
         android:name="com.mirea.komintsev.mireaproject.ui.browser.WebViewFragment"
         android:label="Browser"
@@ -39,4 +28,16 @@
         android:name="com.mirea.komintsev.mireaproject.ui.player.MusicPlayer"
         android:label="@string/music_player"
         tools:layout="@layout/fragment_music_player"/>
+
+    <fragment
+        android:id="@+id/nav_datchic"
+        android:name="com.mirea.komintsev.mireaproject.ui.datchic.FragmentDatchic"
+        android:label="@string/datchic"
+        tools:layout="@layout/fragment_datchic"/>
+
+    <fragment
+        android:id="@+id/nav_photo"
+        android:name="com.mirea.komintsev.mireaproject.ui.photo.FragmentPhoto"
+        android:label="@string/photo"
+        tools:layout="@layout/fragment_photo"/>
 </navigation>
