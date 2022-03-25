@@ -40,4 +40,10 @@
         android:name="com.mirea.komintsev.mireaproject.ui.photo.FragmentPhoto"
         android:label="@string/photo"
         tools:layout="@layout/fragment_photo"/>
+
+    <fragment
+        android:id="@+id/nav_audio"
+        android:name="com.mirea.komintsev.mireaproject.ui.audio.FragmentAudio"
+        android:label="@string/audio"
+        tools:layout="@layout/fragment_audio"/>
 </navigation>

@@ -32,5 +32,10 @@
             android:icon="@android:drawable/ic_menu_camera"
             android:title="@string/photo" />
 
+        <item
+            android:id="@+id/nav_audio"
+            android:icon="@android:drawable/ic_btn_speak_now"
+            android:title="@string/audio" />
+
         </group>
 </menu>

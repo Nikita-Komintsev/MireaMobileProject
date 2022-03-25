@@ -76,15 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_brouser, R.id.nav_calculate,
-                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo)
+                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-    // PHOTO
-        imageView = findViewById(R.id.imageView);
+    // Камера
+        imageView = (ImageView) findViewById(R.id.imageView);
         // Выполняется проверка на наличие разрешений на использование камеры и запись в
 
         int cameraPermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
@@ -140,19 +140,21 @@ public class MainActivity extends AppCompatActivity {
 //     Датчики
 
 
-    // Фото
+    // Камера
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        imageView = (ImageView) findViewById(R.id.imageView);
         // Если приложение камера вернула RESULT_OK, то производится установка изображению imageView
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             imageView.setImageURI(imageUri);
         }
     }
+    @SuppressLint("QueryPermissionsNeeded")
     public void imageViewOnClick(View view) {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // проверка на наличие разрешений для камеры
-        if (cameraIntent.resolveActivity(getPackageManager()) != null && isWork == true)
+        if (cameraIntent.resolveActivity(getPackageManager()) != null && isWork)
         {
             File photoFile = null;
             try {
@@ -162,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
             }
             // генерирование пути к файлу на основе authorities
             String authorities = getApplicationContext().getPackageName() + ".fileprovider";
+            assert photoFile != null;
             imageUri = FileProvider.getUriForFile(this, authorities, photoFile);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
@@ -189,4 +192,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    // Аудиозапись
 }

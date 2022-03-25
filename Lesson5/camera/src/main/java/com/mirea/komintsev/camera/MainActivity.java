@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -53,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageURI(imageUri);
         }
     }
+    @SuppressLint("QueryPermissionsNeeded")
     public void imageViewOnClick(View view) {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // проверка на наличие разрешений для камеры
-        if (cameraIntent.resolveActivity(getPackageManager()) != null && isWork == true)
+        if (cameraIntent.resolveActivity(getPackageManager()) != null && isWork)
         {
             File photoFile = null;
             try {
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
             // генерирование пути к файлу на основе authorities
             String authorities = getApplicationContext().getPackageName() + ".fileprovider";
+            assert photoFile != null;
             imageUri = FileProvider.getUriForFile(this, authorities, photoFile);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
