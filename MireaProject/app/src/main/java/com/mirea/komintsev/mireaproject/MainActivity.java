@@ -2,6 +2,8 @@ package com.mirea.komintsev.mireaproject;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,6 +11,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,6 +22,7 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -35,6 +39,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mirea.komintsev.mireaproject.databinding.ActivityMainBinding;
+import com.mirea.komintsev.mireaproject.ui.audio.AudioService;
 import com.mirea.komintsev.mireaproject.ui.player.PlayerService;
 
 import java.io.File;
@@ -45,15 +50,30 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    // music player
     Button playButton;
     boolean musicPlay = false;
-
+    // camera
     private static final int REQUEST_CODE_PERMISSION_CAMERA = 100;
     final String TAG = MainActivity.class.getSimpleName();
     private ImageView imageView;
     private static final int CAMERA_REQUEST = 0;
     private boolean isWork = false;
     private Uri imageUri;
+    //audio recorder
+    private static final String TAG_AUDIO = MainActivity.class.getSimpleName();
+    private static final int REQUEST_CODE_PERMISSION = 100;
+    private String[] PERMISSIONS = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO
+    };
+    private boolean isWorkAudio;
+    private Button startRecordButton;
+    private Button stopRecordButton;
+    private MediaRecorder mediaRecorder;
+    private File audioFile;
+    Button playAudioButton;
+    Button stopAudioButton;
 
 
     @Override
@@ -97,6 +117,29 @@ public class MainActivity extends AppCompatActivity {
                     REQUEST_CODE_PERMISSION_CAMERA);
         }
 
+    // Audio Recorder
+        startRecordButton = findViewById(R.id.btnStart);
+        stopRecordButton = findViewById(R.id.btnStop);
+        // инициализация объекта MediaRecorder
+        mediaRecorder = new MediaRecorder();
+        // проверка наличия разрешений на выполнение аудиозаписи и сохранения на карту памяти
+        isWorkAudio = hasPermissions(this, PERMISSIONS);
+        if (!isWorkAudio) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE_PERMISSION);
+        }
+
+        audioFile = new File(Environment.getExternalStorageDirectory() + "/mirea.3gp");
+    }
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+
     }
 
     @Override
@@ -122,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
         stopService(
                 new Intent(MainActivity.this, PlayerService.class));
     }
-
     public  void  PlayOrStopMusic(View view){
         playButton = findViewById(R.id.playButton);
         if (!musicPlay){
@@ -137,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//     Датчики
+    // Датчики
 
 
     // Камера
@@ -191,7 +233,97 @@ public class MainActivity extends AppCompatActivity {
                 isWork = false;
             }
         }
+    // Audio
+        if (requestCode == REQUEST_CODE_PERMISSION) {
+            // permission granted
+            isWorkAudio = grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        }
     }
 
     // Аудиозапись
+    // нажатие на кнопку старт
+    public void onRecordStart(View view) {
+        startRecordButton = findViewById(R.id.btnStart);
+        stopRecordButton = findViewById(R.id.btnStop);
+        try {
+            startRecordButton.setEnabled(false);
+            stopRecordButton.setEnabled(true);
+            stopRecordButton.requestFocus();
+            startRecording();
+        } catch (Exception e) {
+            Log.e(TAG, "Caught io exception " + e.getMessage());
+        }
+    }
+    // нажатие на копку стоп
+    public void onStopRecord(View view) {
+        startRecordButton = findViewById(R.id.btnStart);
+        stopRecordButton = findViewById(R.id.btnStop);
+        startRecordButton.setEnabled(true);
+        stopRecordButton.setEnabled(false);
+        startRecordButton.requestFocus();
+        stopRecording();
+        processAudioFile();
+    }
+    private void startRecording() throws IOException {
+        mediaRecorder = new MediaRecorder();
+        // проверка доступности sd - карты
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            Log.d(TAG, "sd-card success");
+            // выбор источника звука
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            // выбор формата данных
+            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            // выбор кодека
+            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+//            if (audioFile == null) {
+//                // создание файла
+//                audioFile = new File(this.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "mirea.3gp");
+//            }
+            String path = Environment.getExternalStorageDirectory() + "/mirea.3gp";
+            mediaRecorder.setOutputFile(path);
+            mediaRecorder.prepare();
+            mediaRecorder.start();
+            Toast.makeText(this, "Recording started!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void stopRecording() {
+        if (mediaRecorder != null) {
+            Log.d(TAG, "stopRecording");
+            mediaRecorder.stop();
+            mediaRecorder.reset();
+            mediaRecorder.release();
+            Toast.makeText(this, "You are not recording right now!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void processAudioFile() {
+        Log.d(TAG, "processAudioFile");
+        ContentValues values = new ContentValues(4);
+        long current = System.currentTimeMillis();
+        // установка meta данных созданному файлу
+        values.put(MediaStore.Audio.Media.TITLE, "audio" + audioFile.getName());
+        values.put(MediaStore.Audio.Media.DATE_ADDED, (int) (current / 1000));
+        values.put(MediaStore.Audio.Media.MIME_TYPE, "audio/3gpp");
+        values.put(MediaStore.Audio.Media.DATA, audioFile.getAbsolutePath());
+        ContentResolver contentResolver = getContentResolver();
+        Log.d(TAG, "audioFile: " + audioFile.canRead());
+        Uri baseUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        Uri newUri = contentResolver.insert(baseUri, values);
+        // оповещение системы о новом файле
+        sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, newUri));
+    }
+
+    public void buttonPlayRecord(View view) {
+        playAudioButton = findViewById(R.id.button_play_audio);
+        startService(new Intent(MainActivity.this, AudioService.class));
+        Toast.makeText(this, "Listening started!", Toast.LENGTH_SHORT).show();
+    }
+    public void buttonStopRecord(View view) {
+        stopAudioButton = findViewById(R.id.button_stop_audio);
+        stopService(new Intent(MainActivity.this, AudioService.class));
+        Toast.makeText(this, "Stop listening", Toast.LENGTH_SHORT).show();
+    }
+
 }
