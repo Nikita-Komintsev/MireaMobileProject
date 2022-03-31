@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Lesson6"
 include ':Preferences'
 include ':internalfilestorage'
+include ':notebook'
