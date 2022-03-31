@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -28,6 +29,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
     // music player
     Button playButton;
     boolean musicPlay = false;
+
+
+
     // camera
     private static final int REQUEST_CODE_PERMISSION_CAMERA = 100;
     final String TAG = MainActivity.class.getSimpleName();
@@ -129,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         audioFile = new File(Environment.getExternalStorageDirectory() + "/mirea.3gp");
+
     }
     public static boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
@@ -178,9 +184,6 @@ public class MainActivity extends AppCompatActivity {
             playButton.setText("Play");
         }
     }
-
-    // Датчики
-
 
     // Камера
     @Override
