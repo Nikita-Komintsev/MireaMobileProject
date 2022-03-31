@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
     // music player
     Button playButton;
     boolean musicPlay = false;
-
-
-
     // camera
     private static final int REQUEST_CODE_PERMISSION_CAMERA = 100;
     final String TAG = MainActivity.class.getSimpleName();
