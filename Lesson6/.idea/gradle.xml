@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/Preferences" />
             <option value="$PROJECT_DIR$/internalfilestorage" />
             <option value="$PROJECT_DIR$/notebook" />
+            <option value="$PROJECT_DIR$/room" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
