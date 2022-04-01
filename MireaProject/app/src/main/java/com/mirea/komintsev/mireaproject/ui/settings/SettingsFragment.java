@@ -13,6 +13,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
-//        Toast.makeText(getContext(), "These are your settings", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "These are your settings", Toast.LENGTH_SHORT).show();
     }
 }
