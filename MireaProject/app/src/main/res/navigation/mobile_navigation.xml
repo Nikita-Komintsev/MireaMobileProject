@@ -46,4 +46,22 @@
         android:name="com.mirea.komintsev.mireaproject.ui.audio.FragmentAudio"
         android:label="@string/audio"
         tools:layout="@layout/fragment_audio"/>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.mirea.komintsev.mireaproject.ui.settings.HomeSettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_home_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.settings.SettingsFragment"
+        android:label="@string/settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_nav_settings"
+            app:destination="@id/nav_settings" />
+    </fragment>
 </navigation>

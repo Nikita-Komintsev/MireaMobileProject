@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_brouser, R.id.nav_calculate,
-                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio)
+                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio, R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
