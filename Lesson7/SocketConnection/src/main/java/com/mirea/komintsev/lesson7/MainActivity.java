@@ -17,19 +17,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextView;
     private String host = "time-a.nist.gov";
     private int port = 13;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = findViewById(R.id.textView);
     }
-
-    public void onClick(View view) {
+    public void OnClick(View view) {
         GetTimeTask timeTask = new GetTimeTask();
         timeTask.execute();
     }
-
     private class GetTimeTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
@@ -53,4 +50,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
