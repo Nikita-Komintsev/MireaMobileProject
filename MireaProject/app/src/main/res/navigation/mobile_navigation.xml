@@ -64,4 +64,23 @@
             android:id="@+id/action_settingsFragment_to_nav_settings"
             app:destination="@id/nav_settings" />
     </fragment>
+
+    <fragment
+        android:id="@+id/storiesFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.stories.StoriesFragment"
+        android:label="Stories"
+        tools:layout="@layout/fragment_stories" >
+        <action
+            android:id="@+id/action_storiesFragment_to_nav_stories"
+            app:destination="@id/nav_stories" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_stories"
+        android:name="com.mirea.komintsev.mireaproject.ui.stories.HomeStoriesFragment"
+        android:label="Stories"
+        tools:layout="@layout/fragment_stories_home" >
+        <action
+            android:id="@+id/action_nav_stories_to_storiesFragment"
+            app:destination="@id/storiesFragment" />
+    </fragment>
 </navigation>

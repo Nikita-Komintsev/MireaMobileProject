@@ -41,6 +41,10 @@
             android:id="@+id/nav_settings"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/settings" />
+        <item
+            android:id="@+id/nav_stories"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/stories" />
 
         </group>
 </menu>

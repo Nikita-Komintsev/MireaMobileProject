@@ -7,29 +7,22 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -62,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 0;
     private boolean isWork = false;
     private Uri imageUri;
+    // stories
     //audio recorder
     private static final String TAG_AUDIO = MainActivity.class.getSimpleName();
     private static final int REQUEST_CODE_PERMISSION = 100;
@@ -98,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_brouser, R.id.nav_calculate,
-                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio, R.id.nav_settings)
+                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio, R.id.nav_settings,
+                R.id.nav_stories)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -118,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_CODE_PERMISSION_CAMERA);
         }
+    // Stories
 
     // Audio Recorder
         startRecordButton = findViewById(R.id.btnStart);
@@ -131,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         audioFile = new File(Environment.getExternalStorageDirectory() + "/mirea.3gp");
+
+        // stories
+
 
     }
     public static boolean hasPermissions(Context context, String... permissions) {
@@ -191,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             imageView.setImageURI(imageUri);
         }
+
     }
     @SuppressLint("QueryPermissionsNeeded")
     public void imageViewOnClick(View view) {
@@ -325,5 +325,7 @@ public class MainActivity extends AppCompatActivity {
         stopService(new Intent(MainActivity.this, AudioService.class));
         Toast.makeText(this, "Stop listening", Toast.LENGTH_SHORT).show();
     }
+
+
 
 }
