@@ -1,4 +1,4 @@
-package com.mirea.komintsev.mireaproject;
+package com.mirea.komintsev.mireaproject.ui.retrofit;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

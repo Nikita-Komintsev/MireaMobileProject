@@ -25,11 +25,7 @@ import com.mirea.komintsev.mireaproject.databinding.FragmentHomeBinding;
 
 public class FragmentDatchic extends Fragment implements SensorEventListener{
     private Activity mActivity;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private FragmentHomeBinding binding;
-    private String mParam1;
-    private String mParam2;
 
     private TextView azimuthTextView;
     private TextView pitchTextView;
@@ -49,8 +45,6 @@ public class FragmentDatchic extends Fragment implements SensorEventListener{
     public static FragmentDatchic newInstance(String param1, String param2) {
         FragmentDatchic fragment = new FragmentDatchic();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }

@@ -1,4 +1,4 @@
-package com.mirea.komintsev.mireaproject;
+package com.mirea.komintsev.mireaproject.ui.retrofit;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mirea.komintsev.mireaproject.R;
 
 import java.util.ArrayList;
 

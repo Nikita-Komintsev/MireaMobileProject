@@ -1,4 +1,4 @@
-package com.mirea.komintsev.mireaproject;
+package com.mirea.komintsev.mireaproject.ui.retrofit;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterViewFlipper;
 import android.widget.Toast;
+
+import com.mirea.komintsev.mireaproject.R;
 
 import java.util.ArrayList;
 
