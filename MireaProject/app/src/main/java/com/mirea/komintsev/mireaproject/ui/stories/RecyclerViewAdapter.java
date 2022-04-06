@@ -15,15 +15,19 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder>{
     private List<Stories> stories;
+    private Context context;
+    private LayoutInflater layoutInflater;
 
-    public RecyclerViewAdapter( List<Stories> data) {
+    public RecyclerViewAdapter( Context context, List<Stories> data) {
         this.stories = data;
+        this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_stories, parent, false);
         return new RecyclerViewHolder(view);
     }
 
@@ -31,16 +35,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         Stories stories = this.stories.get(position);
- //       int imageResID = getDrawableResIdByName(stories.getPhoto())
-//       holder.photo.setImageResource(imageResID);
+        int imageResID = getDrawableResIdByName(stories.getPhoto());
+        holder.photo.setImageResource(imageResID);
         holder.text.setText(stories.getText());
     }
 
-//    private int getDrawableResIdByName(String photo) {
-//        String pkgName = BuildConfig.APPLICATION_ID;
-//        int resId = context.getResources().getIdentifier(photo, "drawable", pkgName);
-//        return resId;
-//    }
+    private int getDrawableResIdByName(String photo) {
+        String pkgName = BuildConfig.APPLICATION_ID;
+        int resId = context.getResources().getIdentifier(photo, "drawable", pkgName);
+        return resId;
+    }
 
     @Override
     public int getItemCount() {

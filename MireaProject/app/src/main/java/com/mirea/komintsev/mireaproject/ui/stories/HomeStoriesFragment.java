@@ -27,9 +27,9 @@ import java.util.Random;
 
 public class HomeStoriesFragment extends Fragment {
     FloatingActionButton fab_add;
-
     RecyclerView recyclerView;
     List<Stories> stories;
+    Button buttonSave;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,19 +43,23 @@ public class HomeStoriesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_stories_home, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
         stories = getListData();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(stories);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), stories));
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
 
         return view;
     }
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        fab_add = getView().findViewById(R.id.fab_add);
+        fab_add = view.findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,29 +68,20 @@ public class HomeStoriesFragment extends Fragment {
             }
         });
         make_stories();
-
     }
+
     private void make_stories() {
         Toast.makeText(getContext(), "make_stories", Toast.LENGTH_SHORT).show();
     }
-
-
-
     private List<Stories> getListData(){
         List<Stories> list = new ArrayList<>();
-        Stories stories1 = new Stories("text1","stories_1");
-//        Stories stories2 = new Stories("text2","stories_2");
-//        Stories stories3 = new Stories("text3","stories_3");
-//        Stories stories4 = new Stories("text4","stories_4");
-//        Stories stories1 = new Stories("text1");
-//        Stories stories2 = new Stories("text2");
-//        Stories stories3 = new Stories("text3");
-//        Stories stories4 = new Stories("text4");
+        Stories stories1 = new Stories("Подпись к фото","stories_1");
+        Stories stories2 = new Stories("Подпись к фото","stories_2");
+        Stories stories3 = new Stories("Подпись к фото","stories_3");
 
         list.add(stories1);
-//        list.add(stories2);
-//        list.add(stories3);
-//        list.add(stories4);
+        list.add(stories2);
+        list.add(stories3);
 
         return  list;
     }
