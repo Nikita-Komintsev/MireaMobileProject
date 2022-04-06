@@ -42,7 +42,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     // music player
@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 0;
     private boolean isWork = false;
     private Uri imageUri;
-    // stories
     //audio recorder
     private static final String TAG_AUDIO = MainActivity.class.getSimpleName();
     private static final int REQUEST_CODE_PERMISSION = 100;
@@ -113,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_CODE_PERMISSION_CAMERA);
         }
-    // Stories
 
     // Audio Recorder
         startRecordButton = findViewById(R.id.btnStart);
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
         audioFile = new File(Environment.getExternalStorageDirectory() + "/mirea.3gp");
 
-        // stories
+        findViewById(R.id.logOutBottom).setOnClickListener(this);
 
 
     }
@@ -144,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -278,10 +276,6 @@ public class MainActivity extends AppCompatActivity {
             mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             // выбор кодека
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-//            if (audioFile == null) {
-//                // создание файла
-//                audioFile = new File(this.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "mirea.3gp");
-//            }
             String path = Environment.getExternalStorageDirectory() + "/mirea.3gp";
             mediaRecorder.setOutputFile(path);
             mediaRecorder.prepare();
@@ -327,5 +321,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onClick(View view) {
+        int i = view.getId();
+        if (i == R.id.logOutBottom){
+            LoginActivity loginActivity = new LoginActivity();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            loginActivity.signOut();
+        }
+    }
 }
