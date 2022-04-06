@@ -45,6 +45,10 @@
             android:id="@+id/nav_stories"
             android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/stories" />
+        <item
+            android:id="@+id/nav_retrofit"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="Retrofit" />
 
         </group>
 </menu>

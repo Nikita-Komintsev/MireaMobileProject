@@ -33,6 +33,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mirea.komintsev.mireaproject.databinding.ActivityMainBinding;
 import com.mirea.komintsev.mireaproject.ui.audio.AudioService;
 import com.mirea.komintsev.mireaproject.ui.player.PlayerService;
@@ -42,7 +44,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     // music player
@@ -70,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button playAudioButton;
     Button stopAudioButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_brouser, R.id.nav_calculate,
                 R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio, R.id.nav_settings,
-                R.id.nav_stories)
+                R.id.nav_stories, R.id.nav_retrofit)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -125,8 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         audioFile = new File(Environment.getExternalStorageDirectory() + "/mirea.3gp");
-
-        findViewById(R.id.logOutBottom).setOnClickListener(this);
 
 
     }
@@ -320,15 +319,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, "Stop listening", Toast.LENGTH_SHORT).show();
     }
 
-
-    @Override
-    public void onClick(View view) {
-        int i = view.getId();
-        if (i == R.id.logOutBottom){
-            LoginActivity loginActivity = new LoginActivity();
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            loginActivity.signOut();
-        }
-    }
 }

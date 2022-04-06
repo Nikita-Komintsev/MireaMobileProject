@@ -26,10 +26,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mPasswordField;
 
     private FirebaseAuth mAuth;
+
+    boolean exit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         mStatusTextView = findViewById(R.id.status);
         mDetailTextView = findViewById(R.id.detail);
@@ -51,9 +54,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
+
     }
 
-    private void updateUI(FirebaseUser user) {
+    public void updateUI(FirebaseUser user) {
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
@@ -151,10 +155,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // [END sign_in_with_email]
     }
 
-    public void signOut() {
+    private void signOut() {
         mAuth.signOut();
         updateUI(null);
     }
+
 
     public void onClick(View v) {
         int i = v.getId();
@@ -170,4 +175,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             user.sendEmailVerification();
         }
     }
+
 }
