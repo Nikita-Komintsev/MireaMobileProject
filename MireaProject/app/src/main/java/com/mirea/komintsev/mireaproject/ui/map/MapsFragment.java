@@ -35,6 +35,13 @@ public class MapsFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
+            mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(@NonNull LatLng latLng) {
+                    mMap.addMarker(new MarkerOptions().title("Где я?")
+                            .snippet("Новое место").position(latLng));
+                }
+            });
             // разрешения
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -53,6 +60,7 @@ public class MapsFragment extends Fragment {
             mMap.setTrafficEnabled(true);
             // Add a markers
             setMarkers();
+
         }
 
         private void setMarkers() {
@@ -110,7 +118,6 @@ public class MapsFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
-        FloatingActionButton fab = requireActivity().findViewById(R.id.fab);
-        fab.hide();
     }
+
 }

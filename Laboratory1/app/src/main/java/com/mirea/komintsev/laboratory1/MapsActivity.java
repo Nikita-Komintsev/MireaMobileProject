@@ -107,16 +107,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().title("МИРЭА")
                 .snippet("Крупнейший политехнический ВУЗ").position(mirea));
     }
-    private void setUpMap2() {
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng mirea = new LatLng(60.670005, 37.479894);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(
-                mirea).zoom(12).build();
-        mMap.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
-        mMap.addMarker(new MarkerOptions().title("МИРЭА")
-                .snippet("Крупнейший политехнический ВУЗ").position(mirea));
-    }
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
