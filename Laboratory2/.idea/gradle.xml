@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/lifecycle" />
             <option value="$PROJECT_DIR$/livedata" />
+            <option value="$PROJECT_DIR$/networkstate" />
+            <option value="$PROJECT_DIR$/viewmodel" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
