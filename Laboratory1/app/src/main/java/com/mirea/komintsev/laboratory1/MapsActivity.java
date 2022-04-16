@@ -1,5 +1,7 @@
 package com.mirea.komintsev.laboratory1;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -7,22 +9,30 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.os.SystemClock;
+import android.util.Log;
 
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 import com.mirea.komintsev.laboratory1.databinding.ActivityMapsBinding;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import java.util.ArrayList;
+
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapClickListener{
 
     private static final int REQUEST_LOCATION = 1;
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
+    ArrayList<LatLng> pointList = new ArrayList<LatLng>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +44,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
+
+
+//        if(savedInstanceState!=null ){
+//            Log.d("Tag", "savedInstanceState!=null");
+//            if(savedInstanceState.containsKey("points")){
+//                pointList = savedInstanceState.getParcelableArrayList("points");
+//                if(pointList!=null){
+//                    for(int i=0;i<pointList.size();i++){
+//                        Log.d("Tag", "drawMarker");
+//                        drawMarker(pointList.get(i));
+//                    }
+//                }
+//            }
+//        }
     }
+
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Log.d("Tag", "onMapReady");
+        for(int i=0;i<pointList.size();i++){
+            Log.d("Tag", "drawMarker");
+            drawMarker(pointList.get(i));
+        }
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -71,5 +103,56 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        setUpMap();
+
+        mMap.setOnMapClickListener(this);
+
+        Log.d("Tag", "drawMarker");
+        if(pointList!=null){
+            for(int i=0;i<pointList.size();i++){
+                Log.d("Tag", "drawMarker");
+                drawMarker(pointList.get(i));
+            }
+        }
     }
+
+
+
+
+    private void setUpMap() {
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        LatLng mirea = new LatLng(55.670005, 37.479894);
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(
+                mirea).zoom(12).build();
+        mMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+        mMap.addMarker(new MarkerOptions().title("МИРЭА")
+                .snippet("Крупнейший политехнический ВУЗ").position(mirea));
+    }
+
+    @Override
+    public void onMapClick(@NonNull LatLng latLng) {
+        Log.d("Tag", "onMapClick");
+        drawMarker(latLng);
+        pointList.add(latLng);
+
+    }
+
+    private void drawMarker(LatLng latLng) {
+        Log.d("Tag", "drawMarker");
+        mMap.addMarker(new MarkerOptions().title("Где я?")
+                .snippet("Новое место").position(latLng));
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Adding the pointList arraylist to Bundle
+        outState.putParcelableArrayList("points", pointList);
+
+        // Saving the bundle
+        super.onSaveInstanceState(outState);
+    }
+
+
 }
