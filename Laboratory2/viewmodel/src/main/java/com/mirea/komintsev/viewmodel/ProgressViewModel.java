@@ -15,7 +15,7 @@ public class ProgressViewModel extends ViewModel {
             public void run() {
                 isShowProgress.postValue(false);
             }
-        }, 20000);
+        }, 10000);
     }
     // Возвращает состояние прогресс?
     MutableLiveData<Boolean> getProgressState() {

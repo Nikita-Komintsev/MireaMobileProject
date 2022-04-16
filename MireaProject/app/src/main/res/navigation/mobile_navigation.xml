@@ -88,4 +88,9 @@
         android:name="com.mirea.komintsev.mireaproject.ui.retrofit.RetrofitFragment"
         android:label="Retrofit"
         tools:layout="@layout/fragment_retrofit" />
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.mirea.komintsev.mireaproject.ui.map.MapsFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

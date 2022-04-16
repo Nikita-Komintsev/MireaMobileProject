@@ -39,20 +39,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        MarkersViewModel markersViewModel = new ViewModelProvider(this).get(MarkersViewModel.class);
-        markersViewModel.getProgressState().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean isVisibleProgressBar) {
-                //TO DO
-            }
-        });
-        markersViewModel.showProgress();
 
 //        if(savedInstanceState!=null ){
 //            Log.d("Tag", "savedInstanceState!=null");
@@ -73,12 +64,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        Log.d("Tag", "onMapReady");
-        for(int i=0;i<pointList.size();i++){
-            Log.d("Tag", "drawMarker");
-            drawMarker(pointList.get(i));
-        }
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // Check Permissions Now
@@ -107,14 +92,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setUpMap();
 
         mMap.setOnMapClickListener(this);
-
-        Log.d("Tag", "drawMarker");
-        if(pointList!=null){
-            for(int i=0;i<pointList.size();i++){
-                Log.d("Tag", "drawMarker");
-                drawMarker(pointList.get(i));
-            }
-        }
     }
 
 
@@ -130,29 +107,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().title("МИРЭА")
                 .snippet("Крупнейший политехнический ВУЗ").position(mirea));
     }
+    private void setUpMap2() {
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        LatLng mirea = new LatLng(60.670005, 37.479894);
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(
+                mirea).zoom(12).build();
+        mMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+        mMap.addMarker(new MarkerOptions().title("МИРЭА")
+                .snippet("Крупнейший политехнический ВУЗ").position(mirea));
+    }
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
-        Log.d("Tag", "onMapClick");
         drawMarker(latLng);
-        pointList.add(latLng);
+//        pointList.add(latLng);
 
     }
 
     private void drawMarker(LatLng latLng) {
-        Log.d("Tag", "drawMarker");
         mMap.addMarker(new MarkerOptions().title("Где я?")
                 .snippet("Новое место").position(latLng));
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        // Adding the pointList arraylist to Bundle
-        outState.putParcelableArrayList("points", pointList);
-
-        // Saving the bundle
-        super.onSaveInstanceState(outState);
-    }
-
-
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        // Adding the pointList arraylist to Bundle
+//        outState.putParcelableArrayList("points", pointList);
+//
+//        // Saving the bundle
+//        super.onSaveInstanceState(outState);
+//    }
 }
