@@ -49,11 +49,18 @@
             android:id="@+id/nav_retrofit"
             android:icon="@android:drawable/btn_star_big_on"
             android:title="Retrofit" />
-
         <item
             android:id="@+id/nav_map"
             android:icon="@android:drawable/ic_dialog_map"
             android:title="@string/map" />
+        <item
+            android:id="@+id/nav_live_data"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/livedata" />
+        <item
+            android:id="@+id/nav_notes_main_fragment"
+            android:icon="@android:drawable/checkbox_on_background"
+            android:title="Notes" />
 
         </group>
 </menu>

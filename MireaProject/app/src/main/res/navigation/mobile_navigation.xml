@@ -93,4 +93,27 @@
         android:name="com.mirea.komintsev.mireaproject.ui.map.MapsFragment"
         android:label="Map"
         tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/nav_live_data"
+        android:name="com.mirea.komintsev.mireaproject.ui.livedata.LiveDataFragment"
+        android:label="LiveData"
+        tools:layout="@layout/fragment_live_data" />
+    <fragment
+        android:id="@+id/nav_notes_main_fragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesMainFragment"
+        android:label="fragment_notes_main"
+        tools:layout="@layout/fragment_notes_main" >
+        <action
+            android:id="@+id/action_notesMainFragment_to_notesTalkerFragment"
+            app:destination="@id/notesTalkerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesTalkerFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesTalkerFragment"
+        android:label="fragment_notes_talker"
+        tools:layout="@layout/fragment_notes_talker" >
+        <action
+            android:id="@+id/action_notesTalkerFragment_to_notesMainFragment"
+            app:destination="@id/nav_notes_main_fragment" />
+    </fragment>
 </navigation>

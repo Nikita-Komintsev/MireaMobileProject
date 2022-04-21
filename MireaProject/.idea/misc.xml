@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.211328125" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout-w936dp/activity_login.xml" value="0.13828125" />
+        <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout-w936dp/activity_notes_add.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/activity_apparate.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/activity_datchic.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
@@ -21,8 +22,11 @@
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_gallery.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_home_settings.xml" value="0.184375" />
+        <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_live_data.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_maps.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_music_player.xml" value="0.22" />
+        <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_notes_main.xml" value="0.184375" />
+        <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_notes_talker.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_photo.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_retrofit.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/fragment_scrolling.xml" value="0.22" />
@@ -34,6 +38,7 @@
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/item.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/item_retrofit.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/nav_header_main.xml" value="0.184375" />
+        <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/notes_list.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/layout/recycle_view.xml" value="0.184375" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/nikit/AndroidStudioProjects/MireaProject/app/src/main/res/menu/main.xml" value="0.184375" />

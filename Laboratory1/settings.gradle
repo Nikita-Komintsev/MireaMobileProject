@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Laboratory1"
 include ':app'
+include ':yandexmaps'

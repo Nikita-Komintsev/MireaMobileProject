@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c1a57ada-685e-4f07-b92f-d139fa054184" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/livedata/LiveDataFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/livedata/TimeLiveData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/MainDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/Notes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/NotesClickListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/NotesListAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/NotesMainFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/NotesTalkerFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/NotesViewHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/RoomDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/ui/notes/SharedViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/layout/fragment_live_data.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/layout/fragment_notes_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/layout/fragment_notes_talker.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/layout/notes_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lesson1" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MireaProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MireaProject/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MireaProject/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../MireaProject/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/java/com/mirea/komintsev/mireaproject/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MireaProject/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MireaProject/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MireaProject/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MireaProject/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="286buqoPziHOflfOdIXbkLlpMHF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1a57ada-685e-4f07-b92f-d139fa054184" name="Default Changelist" comment="" />
+      <created>1650540209376</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650540209376</updated>
+    </task>
+    <servers />
+  </component>
+</project>
