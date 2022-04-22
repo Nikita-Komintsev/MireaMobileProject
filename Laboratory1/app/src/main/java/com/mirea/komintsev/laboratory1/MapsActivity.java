@@ -64,18 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Check Permissions Now
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_LOCATION);
-        } else {
-            // permission has been granted, continue as usual
-            Task<Location> locationResult = LocationServices
-                    .getFusedLocationProviderClient(this)
-                    .getLastLocation();
-        }
+        checkPermission();
         // добавление кнопки определения местоположения
         mMap.setMyLocationEnabled(true);
         // добавление кнопок изменнеия масштаба
@@ -94,7 +83,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapClickListener(this);
     }
 
-
+    private void checkPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Check Permissions Now
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_LOCATION);
+        } else {
+            // permission has been granted, continue as usual
+            Task<Location> locationResult = LocationServices
+                    .getFusedLocationProviderClient(this)
+                    .getLastLocation();
+        }
+    }
 
 
     private void setUpMap() {
