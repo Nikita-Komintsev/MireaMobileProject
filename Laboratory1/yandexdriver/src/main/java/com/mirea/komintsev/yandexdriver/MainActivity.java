@@ -81,12 +81,10 @@ public class MainActivity extends AppCompatActivity  implements
     private void checkPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Check Permissions Now
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_LOCATION);
         } else {
-            // permission has been granted, continue as usual
             Task<Location> locationResult = LocationServices
                     .getFusedLocationProviderClient(this)
                     .getLastLocation();
