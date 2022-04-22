@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         // получение доступа к создайнной ViewModel
         ProgressViewModel viewModel = new ViewModelProvider(this).get(ProgressViewModel.class);
-//                ViewModelProviders.of(this).get(ProgressViewModel.class);
         viewModel.getProgressState().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isVisibleProgressBar) {
