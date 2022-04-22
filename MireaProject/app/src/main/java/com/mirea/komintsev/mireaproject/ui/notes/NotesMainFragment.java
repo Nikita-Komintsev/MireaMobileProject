@@ -34,9 +34,7 @@ public class NotesMainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedViewModel model = new ViewModelProvider(this).get(SharedViewModel.class);
-        model.getSelected().observe(getActivity(), notes1 ->
-////////////////////////////////////////////////////////////
-        );
+
     }
 
     @Override
