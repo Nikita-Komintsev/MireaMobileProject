@@ -92,4 +92,16 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="209dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="136dp"
+        android:text="Войти"
+        app:layout_constraintBottom_toTopOf="@+id/table"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status"
+        app:layout_constraintVertical_bias="0.978" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

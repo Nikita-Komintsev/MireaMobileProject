@@ -6,47 +6,29 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.mirea.komintsev.mireaproject.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_brouser"
-        android:name="com.mirea.komintsev.mireaproject.ui.browser.WebViewFragment"
-        android:label="Browser"
-        tools:layout="@layout/fragment_web" />
-
-    <fragment
         android:id="@+id/nav_calculate"
         android:name="com.mirea.komintsev.mireaproject.ui.calculate.CalculateFragment"
         android:label="@string/calculate"
-        tools:layout="@layout/fragment_calculate"/>
-
-    <fragment
-        android:id="@+id/nav_musicPlayer"
-        android:name="com.mirea.komintsev.mireaproject.ui.player.MusicPlayer"
-        android:label="@string/music_player"
-        tools:layout="@layout/fragment_music_player"/>
-
+        tools:layout="@layout/fragment_calculate" />
     <fragment
         android:id="@+id/nav_datchic"
         android:name="com.mirea.komintsev.mireaproject.ui.datchic.FragmentDatchic"
         android:label="@string/datchic"
-        tools:layout="@layout/fragment_datchic"/>
-
+        tools:layout="@layout/fragment_datchic" />
     <fragment
-        android:id="@+id/nav_photo"
-        android:name="com.mirea.komintsev.mireaproject.ui.photo.FragmentPhoto"
-        android:label="@string/photo"
-        tools:layout="@layout/fragment_photo"/>
-
+        android:id="@+id/nav_stories"
+        android:name="com.mirea.komintsev.mireaproject.ui.stories.HomeStoriesFragment"
+        android:label="Stories"
+        tools:layout="@layout/fragment_stories_home">
+        <action
+            android:id="@+id/action_nav_stories_to_storiesFragment"
+            app:destination="@id/storiesFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/nav_audio"
-        android:name="com.mirea.komintsev.mireaproject.ui.audio.FragmentAudio"
-        android:label="@string/audio"
-        tools:layout="@layout/fragment_audio"/>
-
+        android:id="@+id/nav_live_data"
+        android:name="com.mirea.komintsev.mireaproject.ui.livedata.LiveDataFragment"
+        android:label="LiveData"
+        tools:layout="@layout/fragment_live_data" />
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.mirea.komintsev.mireaproject.ui.settings.HomeSettingsFragment"
@@ -57,63 +39,73 @@
             app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
+        android:id="@+id/nav_notes_main_fragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesMainFragment"
+        android:label="fragment_notes_main"
+        tools:layout="@layout/fragment_notes_main">
+        <action
+            android:id="@+id/action_notesMainFragment_to_notesTalkerFragment"
+            app:destination="@id/notesTalkerFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.mirea.komintsev.mireaproject.ui.settings.SettingsFragment"
-        android:label="@string/settings" >
+        android:label="@string/settings">
         <action
             android:id="@+id/action_settingsFragment_to_nav_settings"
             app:destination="@id/nav_settings" />
     </fragment>
-
     <fragment
-        android:id="@+id/storiesFragment"
-        android:name="com.mirea.komintsev.mireaproject.ui.stories.StoriesFragment"
-        android:label="Stories"
-        tools:layout="@layout/fragment_stories" >
+        android:id="@+id/notesTalkerFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesTalkerFragment"
+        android:label="fragment_notes_talker"
+        tools:layout="@layout/fragment_notes_talker">
         <action
-            android:id="@+id/action_storiesFragment_to_nav_stories"
-            app:destination="@id/nav_stories" />
+            android:id="@+id/action_notesTalkerFragment_to_notesMainFragment"
+            app:destination="@id/nav_notes_main_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_stories"
-        android:name="com.mirea.komintsev.mireaproject.ui.stories.HomeStoriesFragment"
-        android:label="Stories"
-        tools:layout="@layout/fragment_stories_home" >
-        <action
-            android:id="@+id/action_nav_stories_to_storiesFragment"
-            app:destination="@id/storiesFragment" />
-    </fragment>
+        android:id="@+id/nav_photo"
+        android:name="com.mirea.komintsev.mireaproject.ui.photo.FragmentPhoto"
+        android:label="@string/photo"
+        tools:layout="@layout/fragment_photo" />
     <fragment
-        android:id="@+id/nav_retrofit"
-        android:name="com.mirea.komintsev.mireaproject.ui.retrofit.RetrofitFragment"
-        android:label="Retrofit"
-        tools:layout="@layout/fragment_retrofit" />
+        android:id="@+id/nav_brouser"
+        android:name="com.mirea.komintsev.mireaproject.ui.browser.WebViewFragment"
+        android:label="Browser"
+        tools:layout="@layout/fragment_web" />
+    <fragment
+        android:id="@+id/nav_musicPlayer"
+        android:name="com.mirea.komintsev.mireaproject.ui.player.MusicPlayer"
+        android:label="@string/music_player"
+        tools:layout="@layout/fragment_music_player" />
     <fragment
         android:id="@+id/nav_map"
         android:name="com.mirea.komintsev.mireaproject.ui.map.MapsFragment"
         android:label="Map"
         tools:layout="@layout/fragment_maps" />
     <fragment
-        android:id="@+id/nav_live_data"
-        android:name="com.mirea.komintsev.mireaproject.ui.livedata.LiveDataFragment"
-        android:label="LiveData"
-        tools:layout="@layout/fragment_live_data" />
+        android:id="@+id/nav_audio"
+        android:name="com.mirea.komintsev.mireaproject.ui.audio.FragmentAudio"
+        android:label="@string/audio"
+        tools:layout="@layout/fragment_audio" />
     <fragment
-        android:id="@+id/nav_notes_main_fragment"
-        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesMainFragment"
-        android:label="fragment_notes_main"
-        tools:layout="@layout/fragment_notes_main" >
+        android:id="@+id/storiesFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.stories.StoriesFragment"
+        android:label="Stories"
+        tools:layout="@layout/fragment_stories">
         <action
-            android:id="@+id/action_notesMainFragment_to_notesTalkerFragment"
-            app:destination="@id/notesTalkerFragment" />
+            android:id="@+id/action_storiesFragment_to_nav_stories"
+            app:destination="@id/nav_stories" />
     </fragment>
     <fragment
-        android:id="@+id/notesTalkerFragment"
-        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesTalkerFragment"
-        android:label="fragment_notes_talker"
-        tools:layout="@layout/fragment_notes_talker" >
-        <action
-            android:id="@+id/action_notesTalkerFragment_to_notesMainFragment"
-            app:destination="@id/nav_notes_main_fragment" />
-    </fragment>
+        android:id="@+id/nav_home"
+        android:name="com.mirea.komintsev.mireaproject.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_retrofit"
+        android:name="com.mirea.komintsev.mireaproject.ui.retrofit.RetrofitFragment"
+        android:label="Retrofit"
+        tools:layout="@layout/fragment_retrofit" />
 </navigation>
