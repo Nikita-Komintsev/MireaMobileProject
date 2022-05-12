@@ -1,63 +1,62 @@
 package com.mirea.komintsev.mireaproject.ui.notes;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mirea.komintsev.mireaproject.R;
+import com.mirea.komintsev.mireaproject.ui.notes.db.Notes;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class NotesListAdapter extends RecyclerView.Adapter<NotesViewHolder>{
-    NotesMainFragment context;
-    List<Notes> list;
-    NotesClickListener listener;
+public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.MyViewHolder>{
+    private Context context;
+    private List<Notes> notesList;
 
-    public NotesListAdapter(NotesMainFragment context, List<Notes> list, NotesClickListener listener) {
+    public NotesListAdapter(Context context){
         this.context = context;
-        this.list = list;
-        this.listener = listener;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setNotesList(List<Notes> notesList){
+        this.notesList = notesList;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NotesViewHolder(LayoutInflater.from(context.getActivity()).inflate(R.layout.notes_list, parent, false));
+    public NotesListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.notes_list, parent, false);
+
+        return new MyViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
-        holder.textView_title.setText(list.get(position).getTitle());
-        holder.textView_title.setSelected(true);
-
-        holder.textView_notes.setText(list.get(position).getNotes());
-
-        holder.notes_container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClick(list.get(holder.getAdapterPosition()));
-            }
-        });
-
-        holder.notes_container.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                return false;
-            }
-        });
+    public void onBindViewHolder(@NonNull NotesListAdapter.MyViewHolder holder, int position) {
+        holder.tvTitle.setText(this.notesList.get(position).title);
+        holder.tvNote.setText(this.notesList.get(position).description);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return this.notesList.size();
     }
 
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView tvTitle;
+        TextView tvNote;
+        public MyViewHolder(View view){
+            super(view);
+            tvTitle =  view.findViewById(R.id.tvTitle);
+            tvNote=  view.findViewById(R.id.tvNote);
+        }
+    }
 }

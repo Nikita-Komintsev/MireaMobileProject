@@ -1,17 +1,15 @@
 package com.mirea.komintsev.mireaproject.ui.notes;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,21 +17,21 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mirea.komintsev.mireaproject.R;
+import com.mirea.komintsev.mireaproject.ui.notes.db.Notes;
+import com.mirea.komintsev.mireaproject.ui.notes.db.RoomDB;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotesMainFragment extends Fragment {
     RecyclerView recyclerView;
-    NotesListAdapter notesListAdapter;
-    List<Notes> notes = new ArrayList<>();
-    RoomDB database;
     FloatingActionButton fab_add_notes;
+
+    private NotesListAdapter notesListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedViewModel model = new ViewModelProvider(this).get(SharedViewModel.class);
 
     }
 
@@ -47,11 +45,7 @@ public class NotesMainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView=view.findViewById(R.id.recycler_home);
         fab_add_notes=view.findViewById(R.id.fab_add_notes);
-
-        database=RoomDB.getInstance(getActivity());
-        notes=database.mainDao().getAll();
 
 
         fab_add_notes.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +55,23 @@ public class NotesMainFragment extends Fragment {
 
             }
         });
+
+        recyclerView=view.findViewById(R.id.recycler_home);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        notesListAdapter = new NotesListAdapter(this.getContext());
+        recyclerView.setAdapter(notesListAdapter);
+
+        loadNotesList();
+    }
+
+
+    private void loadNotesList(){
+        RoomDB database = RoomDB.getInstance(this.getContext());
+        List<Notes> notesList =  database.mainDao().getAll();
+        notesListAdapter.setNotesList(notesList);
     }
 
 }

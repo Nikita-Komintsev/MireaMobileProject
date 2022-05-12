@@ -28,13 +28,13 @@
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <EditText
-        android:id="@+id/text"
+        android:id="@+id/storiesText"
         android:layout_width="281dp"
         android:layout_height="48dp"
         android:layout_marginStart="72dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Описание фото"
+        android:hint="Описание"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewStories" />
@@ -44,10 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:onClick="SaveStories"
         android:text="Save Stories"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        app:layout_constraintTop_toBottomOf="@+id/storiesText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

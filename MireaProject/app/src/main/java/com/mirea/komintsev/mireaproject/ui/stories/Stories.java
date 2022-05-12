@@ -8,6 +8,9 @@ public class Stories {
         this.text = text;
         this.photo = photo;
     }
+    public Stories(String text) {
+        this.text = text;
+    }
 
     public String getText() {
         return text;

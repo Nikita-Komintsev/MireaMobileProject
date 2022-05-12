@@ -1,5 +1,6 @@
 package com.mirea.komintsev.mireaproject.ui.stories;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mirea.komintsev.mireaproject.MainActivity;
 import com.mirea.komintsev.mireaproject.R;
 
 import java.util.ArrayList;
@@ -30,20 +32,31 @@ public class StoriesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(getContext(), "There you make stories", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stories, container, false);
 
+        text = view.findViewById(R.id.storiesText);
+
         buttonSave = view.findViewById(R.id.buttonSave);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Stories coming soon", Toast.LENGTH_SHORT).show();
+                String textString = ((TextView)view.findViewById(R.id.storiesText)).getText().toString();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("key",textString);
+//                HomeStoriesFragment fragment = new HomeStoriesFragment();
+//                fragment.setArguments(bundle);
+//                getFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.nav_view, fragment)
+//                        .commit();
             }
         });
+
+
 
         return view;
     }

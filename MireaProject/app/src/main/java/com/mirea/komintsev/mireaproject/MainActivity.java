@@ -76,15 +76,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-//        String gmailString = gmailArguments.get("gmail").toString();
-////        gmailTextView = findViewById(R.id.gmailTextView);
-////        gmailTextView.setText(gmailString);
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         String gmailString = gmailArguments.get("gmail").toString();
-        TextView navUsername = (TextView) headerView.findViewById(R.id.gmailTextView);
+        TextView navUsername = headerView.findViewById(R.id.gmailTextView);
         navUsername.setText(gmailString);
+
     }
 
     //    @Override
@@ -92,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
 //        getMenuInflater().inflate(R.menu.main, menu);
 //        return true;
 //    }
-
 
     @Override
     public boolean onSupportNavigateUp() {

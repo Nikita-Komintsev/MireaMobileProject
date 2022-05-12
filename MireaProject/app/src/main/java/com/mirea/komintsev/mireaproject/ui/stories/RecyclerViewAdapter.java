@@ -35,8 +35,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         Stories stories = this.stories.get(position);
-        int imageResID = getDrawableResIdByName(stories.getPhoto());
-        holder.photo.setImageResource(imageResID);
+        //int imageResID = getDrawableResIdByName(stories.getPhoto());
+        //holder.photo.setImageResource(imageResID);
         holder.text.setText(stories.getText());
     }
 

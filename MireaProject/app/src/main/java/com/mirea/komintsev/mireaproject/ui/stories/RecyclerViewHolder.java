@@ -14,7 +14,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder{
     TextView text;
     public RecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.photo = itemView.findViewById(R.id.photo);
+        //this.photo = itemView.findViewById(R.id.photo);
         this.text = itemView.findViewById(R.id.text);
     }
 }

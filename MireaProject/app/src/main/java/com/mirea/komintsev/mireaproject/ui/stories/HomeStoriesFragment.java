@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,6 @@ public class HomeStoriesFragment extends Fragment {
     FloatingActionButton fab_add;
     RecyclerView recyclerView;
     List<Stories> stories;
-    Button buttonSave;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class HomeStoriesFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-
 
         return view;
     }
@@ -73,11 +72,16 @@ public class HomeStoriesFragment extends Fragment {
     private void make_stories() {
         Toast.makeText(getContext(), "make_stories", Toast.LENGTH_SHORT).show();
     }
+
+
     private List<Stories> getListData(){
         List<Stories> list = new ArrayList<>();
-        Stories stories1 = new Stories("Подпись к фото","stories_1");
-        Stories stories2 = new Stories("Подпись к фото","stories_2");
-        Stories stories3 = new Stories("Подпись к фото","stories_3");
+//        Stories stories1 = new Stories("Подпись к фото","stories_1");
+//        Stories stories2 = new Stories("Подпись к фото","stories_2");
+//        Stories stories3 = new Stories("Подпись к фото","stories_3");
+        Stories stories1 = new Stories("Подпись к фото 1");
+        Stories stories2 = new Stories("Подпись к фото 2");
+        Stories stories3 = new Stories("Подпись к фото 3");
 
         list.add(stories1);
         list.add(stories2);
