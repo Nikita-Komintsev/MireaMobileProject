@@ -23,7 +23,7 @@
         android:layout_marginStart="144dp"
         android:layout_marginTop="436dp"
         android:onClick="imageViewOnClick"
-        android:text="Button"
+        android:text="Make Photo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
