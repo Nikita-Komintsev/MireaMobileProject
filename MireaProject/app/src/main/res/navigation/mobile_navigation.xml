@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/nav_notes_main_fragment"
         android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesMainFragment"
-        android:label="fragment_notes_main"
+        android:label="Notes"
         tools:layout="@layout/fragment_notes_main">
         <action
             android:id="@+id/action_notesMainFragment_to_notesTalkerFragment"
@@ -57,9 +57,9 @@
     </fragment>
     <fragment
         android:id="@+id/notesTalkerFragment"
-        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesTalkerFragment"
-        android:label="fragment_notes_talker"
-        tools:layout="@layout/fragment_notes_talker">
+        android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesSecondFragment"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_notes_second">
         <action
             android:id="@+id/action_notesTalkerFragment_to_notesMainFragment"
             app:destination="@id/nav_notes_main_fragment" />
@@ -108,4 +108,5 @@
         android:name="com.mirea.komintsev.mireaproject.ui.retrofit.RetrofitFragment"
         android:label="Retrofit"
         tools:layout="@layout/fragment_retrofit" />
+
 </navigation>

@@ -1,16 +1,20 @@
 package com.mirea.komintsev.mireaproject.ui.notes;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +23,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mirea.komintsev.mireaproject.R;
 import com.mirea.komintsev.mireaproject.ui.notes.db.Notes;
 import com.mirea.komintsev.mireaproject.ui.notes.db.RoomDB;
+import com.mirea.komintsev.mireaproject.ui.notes.db.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class NotesMainFragment extends Fragment {
+public class NotesMainFragment extends Fragment implements NotesListAdapter.ItemClicked{ //implements NotesListAdapter.OnNoteListener
     RecyclerView recyclerView;
     FloatingActionButton fab_add_notes;
 
+//    private ArrayList<Notes> mNotes = new ArrayList<>();
     private NotesListAdapter notesListAdapter;
+    private ViewModel viewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,10 +69,13 @@ public class NotesMainFragment extends Fragment {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        notesListAdapter = new NotesListAdapter(this.getContext());
+
+        viewModel = new ViewModelProvider(this).get(ViewModel.class);
+        notesListAdapter = new NotesListAdapter(this.getContext(), this);
         recyclerView.setAdapter(notesListAdapter);
 
         loadNotesList();
+
     }
 
 
@@ -74,4 +85,8 @@ public class NotesMainFragment extends Fragment {
         notesListAdapter.setNotesList(notesList);
     }
 
+    @Override
+    public void deletedClicked(Notes notes) {
+        viewModel.deleteNote(notes);
+    }
 }
