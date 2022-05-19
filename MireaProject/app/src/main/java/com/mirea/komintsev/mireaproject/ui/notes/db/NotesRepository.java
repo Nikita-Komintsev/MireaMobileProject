@@ -11,7 +11,6 @@ import java.util.List;
 public class NotesRepository {
     private MainDAO mainDAO;
     private RoomDB roomDB;
-    private List<Notes> notesList;
 
     public NotesRepository(Application application){
         roomDB = RoomDB.getInstance(application);

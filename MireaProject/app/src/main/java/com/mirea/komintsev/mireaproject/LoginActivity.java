@@ -3,6 +3,7 @@ package com.mirea.komintsev.mireaproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -64,18 +65,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
 
     }
 
+    @SuppressLint("StringFormatMatches")
     public void updateUI(FirebaseUser user) {
         if (user != null) {
+            String emailVerified;
+            if(user.isEmailVerified())
+            {
+                emailVerified = "Аккаунт подтвержден";
+            }else {
+                emailVerified = "Аккаунт не подтвержден";
+            }
+            mDetailTextView.setText("Авторизация");
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
+                    user.getEmail() +"\n"+ emailVerified));
             gmail = user.getEmail();
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+
             findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
             findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
             findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);

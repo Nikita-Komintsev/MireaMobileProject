@@ -39,14 +39,6 @@
             app:destination="@id/notesTalkerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.mirea.komintsev.mireaproject.ui.settings.SettingsFragment"
-        android:label="@string/settings">
-        <action
-            android:id="@+id/action_settingsFragment_to_nav_settings"
-            app:destination="@id/nav_settings" />
-    </fragment>
-    <fragment
         android:id="@+id/notesTalkerFragment"
         android:name="com.mirea.komintsev.mireaproject.ui.notes.NotesSecondFragment"
         android:label="Add Note"
@@ -54,6 +46,14 @@
         <action
             android:id="@+id/action_notesTalkerFragment_to_notesMainFragment"
             app:destination="@id/nav_notes_main_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.settings.SettingsFragment"
+        android:label="@string/settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_nav_settings"
+            app:destination="@id/nav_settings" />
     </fragment>
     <fragment
         android:id="@+id/nav_photo"
@@ -75,11 +75,11 @@
         android:name="com.mirea.komintsev.mireaproject.ui.map.MapsFragment"
         android:label="Map"
         tools:layout="@layout/fragment_maps" />
-    <fragment
-        android:id="@+id/nav_audio"
-        android:name="com.mirea.komintsev.mireaproject.ui.audio.FragmentAudio"
-        android:label="@string/audio"
-        tools:layout="@layout/fragment_audio" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_audio"-->
+<!--        android:name="com.mirea.komintsev.mireaproject.ui.audio.FragmentAudio"-->
+<!--        android:label="@string/audio"-->
+<!--        tools:layout="@layout/fragment_audio" />-->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.mirea.komintsev.mireaproject.ui.home.HomeFragment"
@@ -90,5 +90,23 @@
         android:name="com.mirea.komintsev.mireaproject.ui.retrofit.RetrofitFragment"
         android:label="Retrofit"
         tools:layout="@layout/fragment_retrofit" />
+    <fragment
+        android:id="@+id/notesV2Fragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.notesV2.NotesV2Fragment"
+        android:label="Notes"
+        tools:layout="@layout/fragment_notes_v2" >
+        <action
+            android:id="@+id/action_notesV2Fragment_to_addNoteV2Fragment"
+            app:destination="@id/addNoteV2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteV2Fragment"
+        android:name="com.mirea.komintsev.mireaproject.ui.notesV2.AddNoteV2Fragment"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_add_note_v2" >
+        <action
+            android:id="@+id/action_addNoteV2Fragment_to_notesV2Fragment"
+            app:destination="@id/notesV2Fragment" />
+    </fragment>
 
 </navigation>

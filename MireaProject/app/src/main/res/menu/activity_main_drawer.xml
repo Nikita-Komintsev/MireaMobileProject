@@ -32,10 +32,10 @@
             android:icon="@android:drawable/ic_menu_camera"
             android:title="@string/photo" />
 
-        <item
-            android:id="@+id/nav_audio"
-            android:icon="@android:drawable/ic_btn_speak_now"
-            android:title="@string/audio" />
+<!--        <item-->
+<!--            android:id="@+id/nav_audio"-->
+<!--            android:icon="@android:drawable/ic_btn_speak_now"-->
+<!--            android:title="@string/audio" />-->
 
         <item
             android:id="@+id/nav_settings"
@@ -53,10 +53,15 @@
             android:id="@+id/nav_live_data"
             android:icon="@android:drawable/ic_menu_today"
             android:title="@string/livedata" />
+<!--        <item-->
+<!--            android:id="@+id/nav_notes_main_fragment"-->
+<!--            android:icon="@android:drawable/checkbox_on_background"-->
+<!--            android:title="Notes" />-->
+
         <item
-            android:id="@+id/nav_notes_main_fragment"
+            android:id="@+id/notesV2Fragment"
             android:icon="@android:drawable/checkbox_on_background"
-            android:title="Notes" />
+            android:title="NotesV2" />
 
         </group>
 </menu>

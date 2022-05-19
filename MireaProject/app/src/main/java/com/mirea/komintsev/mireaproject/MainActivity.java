@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -67,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_brouser, R.id.nav_calculate,
-                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_audio, R.id.nav_settings,
-                R.id.nav_retrofit, R.id.nav_map, R.id.nav_live_data, R.id.nav_notes_main_fragment)
+                R.id.nav_musicPlayer, R.id.nav_datchic, R.id.nav_photo, R.id.nav_settings,
+                R.id.nav_retrofit, R.id.nav_map, R.id.nav_live_data,
+                R.id.notesV2Fragment) // R.id.nav_audio, R.id.nav_notes_main_fragment
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -77,17 +79,29 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
+
         String gmailString = gmailArguments.get("gmail").toString();
         TextView navUsername = headerView.findViewById(R.id.gmailTextView);
         navUsername.setText(gmailString);
 
     }
 
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.toLoginScreen) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
