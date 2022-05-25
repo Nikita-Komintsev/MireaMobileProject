@@ -25,7 +25,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyACGGyPDY0PiJZlzpECWJ9WdOg-ZM-Wc_o" />
+            android:value="APIAIzaSyACGGyPDY0PiJZlzpECWJ9WdOg-ZM-Wc_o" />
 
         <service
             android:name=".ui.audio.AudioService"
